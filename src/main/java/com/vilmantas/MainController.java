@@ -50,6 +50,7 @@ public class MainController {
 		} while (!options.equalsIgnoreCase("play") && !options.equalsIgnoreCase("quit"));
 
 		if (options.equalsIgnoreCase("play")) {
+			
 			subMeniuPlay();
 		} else if (options.equalsIgnoreCase("quit")) {
 			exit();
@@ -204,14 +205,12 @@ public class MainController {
 //		scan.close();
 	}
 
-	private static int exit() {
+	private static void exit() {
 
 		System.out.println("\nThank you for the game!");
 		System.out.println("\nYou leave with " + player.checkBalance() + " EUR");
 		player.takeMoney();
 		System.exit(0);
-
-		return 0;
 
 	}
 

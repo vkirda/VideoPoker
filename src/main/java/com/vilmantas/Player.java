@@ -27,8 +27,16 @@ public class Player {
 	}
 
 	public void setWager(int betAmount) {
-		this.wager = betAmount;
-		this.playersBank = playersBank - wager;
+
+		if (playersBank - betAmount > 0) {
+			this.wager = betAmount;
+			this.playersBank = playersBank - wager;
+		} else {
+			System.out.println("\nYou cannot bet that much! Your balance is: " + playersBank + ", try again.");
+			takeMoney();
+			System.exit(0);
+		}
+
 	}
 
 	public int getWager() {

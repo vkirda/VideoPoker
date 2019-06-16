@@ -9,7 +9,7 @@ import com.vilmantas.enums.Rank;
 import com.vilmantas.enums.Suit;
 
 public class SlotMachine {
-	
+
 	Deck deck = new Deck();
 	private List<Pair<Rank, Suit>> machinesDeck;
 
@@ -42,9 +42,9 @@ public class SlotMachine {
 	}
 
 	public int determineWinner(List<Pair<Rank, Suit>> list) {
-		
+
 		WinningHandHelper playersHand = new WinningHandHelper(list);
-		
+
 		if (playersHand.isRoyalFlush()) {
 			System.out.println("\nYou have Royal Flush!");
 			return 800;
