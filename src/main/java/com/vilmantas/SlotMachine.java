@@ -3,7 +3,7 @@ package com.vilmantas;
 import java.util.Collections;
 import java.util.List;
 
-import org.javatuples.Pair;
+//import org.javatuples.Pair;
 
 import com.vilmantas.enums.Rank;
 import com.vilmantas.enums.Suit;
@@ -11,7 +11,7 @@ import com.vilmantas.enums.Suit;
 public class SlotMachine {
 
 	Deck deck = new Deck();
-	private List<Pair<Rank, Suit>> machinesDeck;
+	private List<Card<Rank, Suit>> machinesDeck;
 
 	public SlotMachine() {
 
@@ -23,7 +23,7 @@ public class SlotMachine {
 		Collections.shuffle(machinesDeck);
 	}
 
-	public List<Pair<Rank, Suit>> get5Cards() {
+	public List<Card<Rank, Suit>> get5Cards() {
 		return machinesDeck.subList(0, 5);
 	}
 
@@ -37,11 +37,11 @@ public class SlotMachine {
 		machinesDeck.remove(0);
 	}
 
-	public Pair<Rank, Suit> get1Card() {
+	public Card<Rank, Suit> get1Card() {
 		return machinesDeck.get(0);
 	}
 
-	public int determineWinner(List<Pair<Rank, Suit>> list) {
+	public int determineWinner(List<Card<Rank, Suit>> list) {
 
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 

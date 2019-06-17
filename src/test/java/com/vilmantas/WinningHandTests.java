@@ -3,7 +3,7 @@ package com.vilmantas;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.javatuples.Pair;
+//import org.javatuples.Pair;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,12 +15,12 @@ public class WinningHandTests {
 	@Test
 	public void isFlush() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
-		list.add(Pair.with(Rank.EIGHT, Suit.SPADES));
-		list.add(Pair.with(Rank.FIVE, Suit.SPADES));
-		list.add(Pair.with(Rank.JACK, Suit.SPADES));
-		list.add(Pair.with(Rank.KING, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
+		list.add(Card.with(Rank.EIGHT, Suit.SPADES));
+		list.add(Card.with(Rank.FIVE, Suit.SPADES));
+		list.add(Card.with(Rank.JACK, Suit.SPADES));
+		list.add(Card.with(Rank.KING, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isFlush());
 
@@ -29,12 +29,12 @@ public class WinningHandTests {
 	@Test
 	public void NotFlush() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
-		list.add(Pair.with(Rank.EIGHT, Suit.SPADES));
-		list.add(Pair.with(Rank.FIVE, Suit.SPADES));
-		list.add(Pair.with(Rank.JACK, Suit.SPADES));
-		list.add(Pair.with(Rank.KING, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
+		list.add(Card.with(Rank.EIGHT, Suit.SPADES));
+		list.add(Card.with(Rank.FIVE, Suit.SPADES));
+		list.add(Card.with(Rank.JACK, Suit.SPADES));
+		list.add(Card.with(Rank.KING, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isFlush());
 
@@ -43,12 +43,12 @@ public class WinningHandTests {
 	@Test
 	public void isLowAceStraight() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.TWO, Suit.SPADES));
-		list.add(Pair.with(Rank.THREE, Suit.SPADES));
-		list.add(Pair.with(Rank.FOUR, Suit.SPADES));
-		list.add(Pair.with(Rank.FIVE, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.TWO, Suit.SPADES));
+		list.add(Card.with(Rank.THREE, Suit.SPADES));
+		list.add(Card.with(Rank.FOUR, Suit.SPADES));
+		list.add(Card.with(Rank.FIVE, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isStraight());
 
@@ -57,12 +57,12 @@ public class WinningHandTests {
 	@Test
 	public void isHighAceStraight() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.TEN, Suit.SPADES));
-		list.add(Pair.with(Rank.JACK, Suit.SPADES));
-		list.add(Pair.with(Rank.QUEEN, Suit.SPADES));
-		list.add(Pair.with(Rank.KING, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.TEN, Suit.SPADES));
+		list.add(Card.with(Rank.JACK, Suit.SPADES));
+		list.add(Card.with(Rank.QUEEN, Suit.SPADES));
+		list.add(Card.with(Rank.KING, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isStraight());
 
@@ -71,12 +71,12 @@ public class WinningHandTests {
 	@Test
 	public void isStraight() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.SPADES));
-		list.add(Pair.with(Rank.SIX, Suit.SPADES));
-		list.add(Pair.with(Rank.SEVEN, Suit.SPADES));
-		list.add(Pair.with(Rank.EIGHT, Suit.SPADES));
-		list.add(Pair.with(Rank.NINE, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.SPADES));
+		list.add(Card.with(Rank.SIX, Suit.SPADES));
+		list.add(Card.with(Rank.SEVEN, Suit.SPADES));
+		list.add(Card.with(Rank.EIGHT, Suit.SPADES));
+		list.add(Card.with(Rank.NINE, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isStraight());
 
@@ -85,12 +85,12 @@ public class WinningHandTests {
 	@Test
 	public void isNotStraight() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.SPADES));
-		list.add(Pair.with(Rank.SIX, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
-		list.add(Pair.with(Rank.EIGHT, Suit.SPADES));
-		list.add(Pair.with(Rank.NINE, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.SPADES));
+		list.add(Card.with(Rank.SIX, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
+		list.add(Card.with(Rank.EIGHT, Suit.SPADES));
+		list.add(Card.with(Rank.NINE, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isStraight());
 
@@ -99,12 +99,12 @@ public class WinningHandTests {
 	@Test
 	public void isRoyalFlus() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.ACE, Suit.CLUBS));
-		list.add(Pair.with(Rank.KING, Suit.CLUBS));
-		list.add(Pair.with(Rank.QUEEN, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.CLUBS));
-		list.add(Pair.with(Rank.TEN, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.ACE, Suit.CLUBS));
+		list.add(Card.with(Rank.KING, Suit.CLUBS));
+		list.add(Card.with(Rank.QUEEN, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.CLUBS));
+		list.add(Card.with(Rank.TEN, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isRoyalFlush());
 
@@ -113,12 +113,12 @@ public class WinningHandTests {
 	@Test
 	public void isNotRoyalFlus() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.KING, Suit.CLUBS));
-		list.add(Pair.with(Rank.QUEEN, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.CLUBS));
-		list.add(Pair.with(Rank.TEN, Suit.CLUBS));
-		list.add(Pair.with(Rank.NINE, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.KING, Suit.CLUBS));
+		list.add(Card.with(Rank.QUEEN, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.CLUBS));
+		list.add(Card.with(Rank.TEN, Suit.CLUBS));
+		list.add(Card.with(Rank.NINE, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isRoyalFlush());
 
@@ -127,12 +127,12 @@ public class WinningHandTests {
 	@Test
 	public void isStraightFlus() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.KING, Suit.CLUBS));
-		list.add(Pair.with(Rank.QUEEN, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.CLUBS));
-		list.add(Pair.with(Rank.TEN, Suit.CLUBS));
-		list.add(Pair.with(Rank.NINE, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.KING, Suit.CLUBS));
+		list.add(Card.with(Rank.QUEEN, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.CLUBS));
+		list.add(Card.with(Rank.TEN, Suit.CLUBS));
+		list.add(Card.with(Rank.NINE, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isStraightFlush());
 
@@ -141,12 +141,12 @@ public class WinningHandTests {
 	@Test
 	public void isNotStraightFlus() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.KING, Suit.CLUBS));
-		list.add(Pair.with(Rank.QUEEN, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.CLUBS));
-		list.add(Pair.with(Rank.TEN, Suit.CLUBS));
-		list.add(Pair.with(Rank.ACE, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.KING, Suit.CLUBS));
+		list.add(Card.with(Rank.QUEEN, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.CLUBS));
+		list.add(Card.with(Rank.TEN, Suit.CLUBS));
+		list.add(Card.with(Rank.ACE, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isStraightFlush());
 
@@ -155,12 +155,12 @@ public class WinningHandTests {
 	@Test
 	public void isLowStraightFlus() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.FOUR, Suit.CLUBS));
-		list.add(Pair.with(Rank.THREE, Suit.CLUBS));
-		list.add(Pair.with(Rank.TWO, Suit.CLUBS));
-		list.add(Pair.with(Rank.ACE, Suit.CLUBS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.FOUR, Suit.CLUBS));
+		list.add(Card.with(Rank.THREE, Suit.CLUBS));
+		list.add(Card.with(Rank.TWO, Suit.CLUBS));
+		list.add(Card.with(Rank.ACE, Suit.CLUBS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isStraightFlush());
 
@@ -169,12 +169,12 @@ public class WinningHandTests {
 	@Test
 	public void isFourOfAKind() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.FIVE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.ACE, Suit.CLUBS));
-		list.add(Pair.with(Rank.FIVE, Suit.HEARTS));
-		list.add(Pair.with(Rank.FIVE, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.FIVE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.ACE, Suit.CLUBS));
+		list.add(Card.with(Rank.FIVE, Suit.HEARTS));
+		list.add(Card.with(Rank.FIVE, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isFourOfAKind());
 
@@ -183,12 +183,12 @@ public class WinningHandTests {
 	@Test
 	public void isNotFourOfAKind() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.FIVE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.HEARTS));
-		list.add(Pair.with(Rank.JACK, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.FIVE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.HEARTS));
+		list.add(Card.with(Rank.JACK, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isFourOfAKind());
 
@@ -197,12 +197,12 @@ public class WinningHandTests {
 	@Test
 	public void isFullHouse() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.FIVE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.JACK, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.HEARTS));
-		list.add(Pair.with(Rank.JACK, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.FIVE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.JACK, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.HEARTS));
+		list.add(Card.with(Rank.JACK, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isFullHouse());
 
@@ -211,12 +211,12 @@ public class WinningHandTests {
 	@Test
 	public void isNotFullHouse() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.FIVE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.JACK, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.FIVE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.JACK, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isFullHouse());
 
@@ -225,12 +225,12 @@ public class WinningHandTests {
 	@Test
 	public void isThreeOfAKind1() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.TWO, Suit.CLUBS));
-		list.add(Pair.with(Rank.TWO, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.TWO, Suit.SPADES));
-		list.add(Pair.with(Rank.JACK, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.TWO, Suit.CLUBS));
+		list.add(Card.with(Rank.TWO, Suit.DIAMONDS));
+		list.add(Card.with(Rank.TWO, Suit.SPADES));
+		list.add(Card.with(Rank.JACK, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isThreeOfAKind());
 
@@ -239,12 +239,12 @@ public class WinningHandTests {
 	@Test
 	public void isThreeOfAKind2() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.JACK, Suit.SPADES));
-		list.add(Pair.with(Rank.JACK, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.DIAMONDS));
+		list.add(Card.with(Rank.JACK, Suit.SPADES));
+		list.add(Card.with(Rank.JACK, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isThreeOfAKind());
 
@@ -253,12 +253,12 @@ public class WinningHandTests {
 	@Test
 	public void isThreeOfAKind3() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.NINE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.NINE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isThreeOfAKind());
 
@@ -267,138 +267,138 @@ public class WinningHandTests {
 	@Test
 	public void isNotThreeOfAKind() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.NINE, Suit.CLUBS));
-		list.add(Pair.with(Rank.NINE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.NINE, Suit.CLUBS));
+		list.add(Card.with(Rank.NINE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isThreeOfAKind());
 
 	}
 
 	@Test
-	public void isTwoPair1() {
+	public void isTwoCard1() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.TWO, Suit.CLUBS));
-		list.add(Pair.with(Rank.TWO, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.JACK, Suit.SPADES));
-		list.add(Pair.with(Rank.JACK, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.TWO, Suit.CLUBS));
+		list.add(Card.with(Rank.TWO, Suit.DIAMONDS));
+		list.add(Card.with(Rank.JACK, Suit.SPADES));
+		list.add(Card.with(Rank.JACK, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isTwoPair());
 
 	}
 
 	@Test
-	public void isTwoPair2() {
+	public void isTwoCard2() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.FIVE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.JACK, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.FIVE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.JACK, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isTwoPair());
 
 	}
 
 	@Test
-	public void isTwoPair3() {
+	public void isTwoCard3() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.FIVE, Suit.CLUBS));
-		list.add(Pair.with(Rank.NINE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.NINE, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.FIVE, Suit.CLUBS));
+		list.add(Card.with(Rank.NINE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.NINE, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isTwoPair());
 
 	}
 
 	@Test
-	public void isNotTwoPair() {
+	public void isNotTwoCard() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.NINE, Suit.CLUBS));
-		list.add(Pair.with(Rank.NINE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.ACE, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
-		list.add(Pair.with(Rank.ACE, Suit.DIAMONDS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.NINE, Suit.CLUBS));
+		list.add(Card.with(Rank.NINE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.ACE, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
+		list.add(Card.with(Rank.ACE, Suit.DIAMONDS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isTwoPair());
 
 	}
 
 	@Test
-	public void isPairOfJacks() {
+	public void isCardOfJacks() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.JACK, Suit.CLUBS));
-		list.add(Pair.with(Rank.JACK, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.NINE, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
-		list.add(Pair.with(Rank.KING, Suit.DIAMONDS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.JACK, Suit.CLUBS));
+		list.add(Card.with(Rank.JACK, Suit.DIAMONDS));
+		list.add(Card.with(Rank.NINE, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
+		list.add(Card.with(Rank.KING, Suit.DIAMONDS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isJacksOrBetter());
 
 	}
 
 	@Test
-	public void isPairOfQeens() {
+	public void isCardOfQeens() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.JACK, Suit.CLUBS));
-		list.add(Pair.with(Rank.QUEEN, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.NINE, Suit.SPADES));
-		list.add(Pair.with(Rank.ACE, Suit.HEARTS));
-		list.add(Pair.with(Rank.QUEEN, Suit.HEARTS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.JACK, Suit.CLUBS));
+		list.add(Card.with(Rank.QUEEN, Suit.DIAMONDS));
+		list.add(Card.with(Rank.NINE, Suit.SPADES));
+		list.add(Card.with(Rank.ACE, Suit.HEARTS));
+		list.add(Card.with(Rank.QUEEN, Suit.HEARTS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isJacksOrBetter());
 
 	}
 
 	@Test
-	public void isPairOfKings() {
+	public void isCardOfKings() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.KING, Suit.CLUBS));
-		list.add(Pair.with(Rank.ACE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.NINE, Suit.SPADES));
-		list.add(Pair.with(Rank.KING, Suit.HEARTS));
-		list.add(Pair.with(Rank.QUEEN, Suit.HEARTS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.KING, Suit.CLUBS));
+		list.add(Card.with(Rank.ACE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.NINE, Suit.SPADES));
+		list.add(Card.with(Rank.KING, Suit.HEARTS));
+		list.add(Card.with(Rank.QUEEN, Suit.HEARTS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isJacksOrBetter());
 
 	}
 
 	@Test
-	public void isPairOfAces() {
+	public void isCardOfAces() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.ACE, Suit.CLUBS));
-		list.add(Pair.with(Rank.ACE, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.NINE, Suit.SPADES));
-		list.add(Pair.with(Rank.KING, Suit.HEARTS));
-		list.add(Pair.with(Rank.QUEEN, Suit.HEARTS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.ACE, Suit.CLUBS));
+		list.add(Card.with(Rank.ACE, Suit.DIAMONDS));
+		list.add(Card.with(Rank.NINE, Suit.SPADES));
+		list.add(Card.with(Rank.KING, Suit.HEARTS));
+		list.add(Card.with(Rank.QUEEN, Suit.HEARTS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertTrue(playersHand.isJacksOrBetter());
 
 	}
 
 	@Test
-	public void isNotPairOfJacsOrBetter() {
+	public void isNotCardOfJacsOrBetter() {
 
-		List<Pair<Rank, Suit>> list = new ArrayList<Pair<Rank, Suit>>();
-		list.add(Pair.with(Rank.ACE, Suit.CLUBS));
-		list.add(Pair.with(Rank.KING, Suit.DIAMONDS));
-		list.add(Pair.with(Rank.NINE, Suit.SPADES));
-		list.add(Pair.with(Rank.NINE, Suit.HEARTS));
-		list.add(Pair.with(Rank.QUEEN, Suit.HEARTS));
+		List<Card<Rank, Suit>> list = new ArrayList<Card<Rank, Suit>>();
+		list.add(Card.with(Rank.ACE, Suit.CLUBS));
+		list.add(Card.with(Rank.KING, Suit.DIAMONDS));
+		list.add(Card.with(Rank.NINE, Suit.SPADES));
+		list.add(Card.with(Rank.NINE, Suit.HEARTS));
+		list.add(Card.with(Rank.QUEEN, Suit.HEARTS));
 		WinningHandHelper playersHand = new WinningHandHelper(list);
 		Assert.assertFalse(playersHand.isJacksOrBetter());
 

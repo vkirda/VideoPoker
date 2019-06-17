@@ -3,14 +3,14 @@ package com.vilmantas;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.javatuples.Pair;
+//import org.javatuples.Card;
 
 import com.vilmantas.enums.Rank;
 import com.vilmantas.enums.Suit;
 
 public class Player {
 
-	private List<Pair<Rank, Suit>> playersCards = new ArrayList<Pair<Rank, Suit>>();
+	private List<Card<Rank, Suit>> playersCards = new ArrayList<Card<Rank, Suit>>();
 	private int playersBank = 0;
 	private int wager = 0;
 
@@ -43,19 +43,19 @@ public class Player {
 		return wager;
 	}
 
-	public void setPlayerCards(List<Pair<Rank, Suit>> slotMachineCards) {
+	public void setPlayerCards(List<Card<Rank, Suit>> slotMachineCards) {
 
 		this.playersCards.addAll(slotMachineCards);
 
 	}
 
-	public void setPlayerCards(Pair<Rank, Suit> slotMachineCards) {
+	public void setPlayerCards(Card<Rank, Suit> slotMachineCards) {
 
 		this.playersCards.add(slotMachineCards);
 
 	}
 
-	public List<Pair<Rank, Suit>> getPlayerCards() {
+	public List<Card<Rank, Suit>> getPlayerCards() {
 
 		return playersCards;
 	}

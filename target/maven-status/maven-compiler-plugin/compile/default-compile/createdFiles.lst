@@ -1,0 +1,8 @@
+com\vilmantas\Card.class
+com\vilmantas\SlotMachine.class
+com\vilmantas\Deck.class
+com\vilmantas\MainController.class
+com\vilmantas\enums\Rank.class
+com\vilmantas\Player.class
+com\vilmantas\enums\Suit.class
+com\vilmantas\WinningHandHelper.class

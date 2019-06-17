@@ -9,7 +9,7 @@
 	<description>VideoPokerConsoleApplication</description>
 
 	<build>
-		<!-- <sourceDirectory>src</sourceDirectory> -->
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 
 			<plugin>
@@ -21,7 +21,7 @@
 				</configuration>
 			</plugin>
 
-			<!-- <plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>3.1.2</version>
@@ -32,7 +32,7 @@
 						</manifest>
 					</archive>
 				</configuration>
-			</plugin> -->
+			</plugin>
 		</plugins>
 	</build>
 
@@ -43,11 +43,11 @@
 	<dependencies>
 
 		<!-- https://mvnrepository.com/artifact/org.javatuples/javatuples -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.javatuples</groupId>
 			<artifactId>javatuples</artifactId>
 			<version>1.2</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>

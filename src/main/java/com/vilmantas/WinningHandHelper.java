@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
-import org.javatuples.Pair;
+//import org.javatuples.Pair;
 
 import com.vilmantas.enums.Rank;
 import com.vilmantas.enums.Suit;
@@ -23,7 +23,7 @@ public class WinningHandHelper {
 	// just regular list, need duplicates and sorted
 	private List<Rank> rankList = new ArrayList<Rank>();
 
-	public WinningHandHelper(List<Pair<Rank, Suit>> list) {
+	public WinningHandHelper(List<Card<Rank, Suit>> list) {
 
 		for (int i = 0; i < list.size(); i++) {
 			this.rankSet.add(list.get(i).getValue0());

@@ -3,26 +3,26 @@ package com.vilmantas;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.javatuples.Pair;
+//import org.javatuples.Pair;
 
 import com.vilmantas.enums.Rank;
 import com.vilmantas.enums.Suit;
 
 public class Deck {
 
-	private Pair<Rank, Suit> card;
-	private List<Pair<Rank, Suit>> deck = new ArrayList<>();
+	private Card<Rank, Suit> card;
+	private List<Card<Rank, Suit>> deck = new ArrayList<>();
 
 	public Deck() {
 	}
 
-	public Pair<Rank, Suit> getSingleCard() {
+	public Card<Rank, Suit> getSingleCard() {
 		return card;
 	}
 
 	public void setSingleCard(Rank c, Suit s) {
 
-		this.card = Pair.with(c, s);
+		this.card = Card.with(c, s);
 
 	}
 
@@ -35,7 +35,7 @@ public class Deck {
 		}
 	}
 
-	public List<Pair<Rank, Suit>> getDeck() {
+	public List<Card<Rank, Suit>> getDeck() {
 		return deck;
 	}
 
