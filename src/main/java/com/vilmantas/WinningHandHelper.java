@@ -1,180 +1,141 @@
 package com.vilmantas;
 
+import com.vilmantas.enums.Rank;
+import com.vilmantas.enums.Suit;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
-//import org.javatuples.Pair;
-
-import com.vilmantas.enums.Rank;
-import com.vilmantas.enums.Suit;
-
 public class WinningHandHelper {
 
-	// sorted by default and no duplicates
-	private EnumSet<Suit> suitSet = EnumSet.noneOf(Suit.class);
-	private EnumSet<Rank> rankSet = EnumSet.noneOf(Rank.class);
+    // sorted by default and no duplicates
+    private final EnumSet<Suit> suitsUniqueSorted = EnumSet.noneOf(Suit.class);
+    private final EnumSet<Rank> ranksUniqueSorted = EnumSet.noneOf(Rank.class);
 
-	// sorted by default and no duplicates, has method get not like EnumSet
-	private List<Suit> suitListFromSet = new ArrayList<Suit>();
-	private List<Rank> rankListFromSet = new ArrayList<Rank>();
+    // need duplicates
+    private final List<Rank> ranks = new ArrayList<>();
 
-	// just regular list, need duplicates and sorted
-	private List<Rank> rankList = new ArrayList<Rank>();
+    public WinningHandHelper(List<Card> list) {
 
-	public WinningHandHelper(List<Card<Rank, Suit>> list) {
+        list.forEach(card -> {
+            this.ranksUniqueSorted.add(card.getRank());
+            this.suitsUniqueSorted.add(card.getSuit());
+            this.ranks.add(card.getRank());
+        });
 
-		for (int i = 0; i < list.size(); i++) {
-			this.rankSet.add(list.get(i).getValue0());
-			this.suitSet.add(list.get(i).getValue1());
-			this.rankList.add(list.get(i).getValue0());
-		}
-		this.rankListFromSet.addAll(rankSet);
-		this.suitListFromSet.addAll(suitSet);
+        Collections.sort(ranks);
+    }
 
-		// sorting list
-		Collections.sort(rankList);
-	}
+    public boolean isRoyalFlush() {
 
-	public EnumSet<Suit> getSuitSet() {
-		return suitSet;
-	}
+        return ranksUniqueSorted.contains(Rank.ACE) && ranksUniqueSorted.contains(Rank.KING) && isFlush() && isStraight();
+    }
 
-	public EnumSet<Rank> getRankSet() {
-		return rankSet;
-	}
+    public boolean isStraightFlush() {
 
-	public boolean isRoyalFlush() {
+        return (!ranksUniqueSorted.contains(Rank.ACE) || !ranksUniqueSorted.contains(Rank.KING)) && isFlush() && isStraight();
 
-		if (rankSet.contains(Rank.ACE) && rankSet.contains(Rank.KING)) {
-			if (isFlush() && isStraight()) {
-				return true;
-			}
-		}
+    }
 
-		return false;
-	}
+    public boolean isFourOfAKind() {
 
-	public boolean isStraightFlush() {
+        return ranks.get(0) == ranks.get(3) || ranks.get(1) == ranks.get(4);
+    }
 
-		// if hand has ace and king - its not straight flush
-		if (rankSet.contains(Rank.ACE) && rankSet.contains(Rank.KING)) {
-			return false;
-		}
+    public boolean isFullHouse() {
 
-		if (isFlush() && isStraight()) {
-			return true;
-		}
+        return (ranks.get(0) == ranks.get(2) && ranks.get(3) == ranks.get(4)) ||
+                (ranks.get(0) == ranks.get(1) && ranks.get(2) == ranks.get(4));
+    }
 
-		return false;
-	}
+    public boolean isFlush() {
 
-	public boolean isFourOfAKind() {
+        return ranksUniqueSorted.size() == 5 && suitsUniqueSorted.size() == 1;
 
-		// list is already sorted by the constructor
-		if (rankList.get(0) == rankList.get(3) || rankList.get(1) == rankList.get(4)) {
-			return true;
-		}
+    }
 
-		return false;
-	}
+    public boolean isStraight() {
 
-	public boolean isFullHouse() {
+        if (ranksUniqueSorted.size() != 5) {
+            return false;
+        }
 
-		// list is already sorted by the constructor
-		if ((rankList.get(0) == rankList.get(2) && (rankList.get(3) == rankList.get(4)))
-				|| (rankList.get(0) == rankList.get(1) && (rankList.get(2) == rankList.get(4)))) {
-			return true;
-		}
-		return false;
-	}
+        if (ranksUniqueSorted.contains(Rank.ACE) &&
+                ranksUniqueSorted.contains(Rank.TWO) &&
+                ranksUniqueSorted.contains(Rank.THREE) &&
+                ranksUniqueSorted.contains(Rank.FOUR) &&
+                ranksUniqueSorted.contains(Rank.FIVE)) {
+            return true;
+        }
 
-	public boolean isFlush() {
+        // Taking first card in the hand and to its value adding 1 - that means second
+        // card value has to increase one. If not - that's not straight
+        int nextCard = ranks.get(0).ordinal() + 1;
+        for (int i = 1; i < ranks.size(); i++) {
+            if (ranks.get(i).ordinal() != nextCard) {
+                return false;
+            }
+            nextCard++;
+        }
 
-		// if there is no duplicates in rank set - then proceed
-		if (rankSet.size() == 5) {
-			// there is 5 duplicates in suit set - then set only show 1 element
-			if (suitSet.size() == 1) {
-				return true;
-			}
-		}
+        return true;
+    }
 
-		return false;
-	}
+    public boolean isThreeOfAKind() {
 
-	public boolean isStraight() {
+        return (isRanksSameAtIndex(0, 2) && isRanksNotSameAtIndex(3, 4)) ||
+                (isRanksSameAtIndex(1, 3) && isRanksNotSameAtIndex(0, 4)) ||
+                (isRanksSameAtIndex(2, 4) && isRanksNotSameAtIndex(0, 1));
+    }
 
-		if (rankSet.size() == 5) {
+    public boolean isTwoPair() {
 
-			if (rankSet.contains(Rank.ACE) && rankSet.contains(Rank.TWO) && rankSet.contains(Rank.THREE)
-					&& rankSet.contains(Rank.FOUR) && rankSet.contains(Rank.FIVE)) {
-				return true;
-			}
+        if (ranksUniqueSorted.size() != 3) {
+            return false;
+        }
 
-			// Taking first card in the hand and to its value adding 1 - that means second
-			// card value has to increase one. If not - thats not straight
-			int nextCard = rankListFromSet.get(0).ordinal() + 1;
-			for (int i = 1; i < rankListFromSet.size(); i++) {
-				if (rankListFromSet.get(i).ordinal() != nextCard) {
-					return false;
-				}
-				nextCard++;
-			}
-			return true;
+        return (isRanksSameAtIndex(0, 1) && isRanksSameAtIndex(2, 3)) ||
+                (isRanksSameAtIndex(0, 1) && isRanksSameAtIndex(3, 4)) ||
+                (isRanksSameAtIndex(1, 2) && isRanksSameAtIndex(3, 4));
+    }
 
-		}
-		return false;
-	}
+    public boolean isJacksOrBetter() {
 
-	public boolean isThreeOfAKind() {
+        int jackCounter = 0;
+        int queenCounter = 0;
+        int kingCounter = 0;
+        int aceCounter = 0;
 
-		if ((rankList.get(0) == rankList.get(2) && (rankList.get(3) != rankList.get(4)))
-				|| (rankList.get(1) == rankList.get(3) && (rankList.get(0) != rankList.get(4)))
-				|| (rankList.get(2) == rankList.get(4) && (rankList.get(0) != rankList.get(1)))) {
-			return true;
-		}
-		return false;
-	}
+        if (ranksUniqueSorted.size() != 4) {
+            return false;
+        }
 
-	public boolean isTwoPair() {
-		if (rankSet.size() == 3) {
-			if ((rankList.get(0) == rankList.get(1) && (rankList.get(2) == rankList.get(3)))
-					|| (rankList.get(0) == rankList.get(1) && (rankList.get(3) == rankList.get(4)))
-					|| (rankList.get(1) == rankList.get(2) && (rankList.get(3) == rankList.get(4)))) {
-				return true;
-			}
-		}
-		return false;
-	}
+        for (Rank rank : ranks) {
+            if (rank == Rank.JACK) {
+                jackCounter++;
+            }
+            if (rank == Rank.QUEEN) {
+                queenCounter++;
+            }
+            if (rank == Rank.KING) {
+                kingCounter++;
+            }
+            if (rank == Rank.ACE) {
+                aceCounter++;
+            }
+        }
 
-	public boolean isJacksOrBetter() {
-		int jackCounter = 0;
-		int queenCounter = 0;
-		int kingCounter = 0;
-		int aceCounter = 0;
-		if (rankSet.size() == 4) {
-			for (int i = 0; i < rankList.size(); i++) {
-				if (rankList.get(i) == Rank.JACK) {
-					jackCounter++;
-				}
-				if (rankList.get(i) == Rank.QUEEN) {
-					queenCounter++;
-				}
-				if (rankList.get(i) == Rank.KING) {
-					kingCounter++;
-				}
-				if (rankList.get(i) == Rank.ACE) {
-					aceCounter++;
-				}
-			}
+        return jackCounter == 2 || queenCounter == 2 || kingCounter == 2 || aceCounter == 2;
+    }
 
-			if (jackCounter == 2 || queenCounter == 2 || kingCounter == 2 || aceCounter == 2) {
-				return true;
-			}
-		}
+    private boolean isRanksSameAtIndex(int sortedCardIndex1, int sortedCardIndex2) {
+        return ranks.get(sortedCardIndex1) == ranks.get(sortedCardIndex2);
+    }
 
-		return false;
-	}
+    private boolean isRanksNotSameAtIndex(int sortedCardIndex1, int sortedCardIndex2) {
+        return ranks.get(sortedCardIndex1) != ranks.get(sortedCardIndex2);
+    }
 
 }

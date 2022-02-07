@@ -1,42 +1,36 @@
 package com.vilmantas;
 
-import java.util.ArrayList;
-import java.util.List;
-
-//import org.javatuples.Pair;
-
 import com.vilmantas.enums.Rank;
 import com.vilmantas.enums.Suit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Deck {
 
-	private Card<Rank, Suit> card;
-	private List<Card<Rank, Suit>> deck = new ArrayList<>();
+    private Card card;
+    private final List<Card> cards = new ArrayList<>();
 
-	public Deck() {
-	}
+    public Card getSingleCard() {
+        return card;
+    }
 
-	public Card<Rank, Suit> getSingleCard() {
-		return card;
-	}
+    public void setSingleCard(Rank c, Suit s) {
 
-	public void setSingleCard(Rank c, Suit s) {
+        this.card = Card.with(c, s);
+    }
 
-		this.card = Card.with(c, s);
+    public void setNewDeck() {
+        for (Suit i : Suit.values()) {
+            for (Rank j : Rank.values()) {
+                setSingleCard(j, i);
+                this.cards.add(getSingleCard());
+            }
+        }
+    }
 
-	}
-
-	public void setNewDeck() {
-		for (Suit i : Suit.values()) {
-			for (Rank j : Rank.values()) {
-				setSingleCard(j, i);
-				this.deck.add(getSingleCard());
-			}
-		}
-	}
-
-	public List<Card<Rank, Suit>> getDeck() {
-		return deck;
-	}
+    public List<Card> getCards() {
+        return cards;
+    }
 
 }

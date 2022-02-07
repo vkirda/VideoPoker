@@ -3,80 +3,77 @@ package com.vilmantas;
 import java.util.ArrayList;
 import java.util.List;
 
-//import org.javatuples.Card;
-
-import com.vilmantas.enums.Rank;
-import com.vilmantas.enums.Suit;
-
 public class Player {
 
-	private List<Card<Rank, Suit>> playersCards = new ArrayList<Card<Rank, Suit>>();
-	private int playersBank = 0;
-	private int wager = 0;
+    private final List<Card> playersCards = new ArrayList<>();
+    private int playersBank = 0;
+    private int wager = 0;
 
-	public void addmoney(int amount) {
-		playersBank = playersBank + amount;
-	}
+    public void addMoney(int amount) {
 
-	public int checkBalance() {
-		return playersBank;
-	}
+        playersBank = playersBank + amount;
+    }
 
-	public void takeMoney() {
-		playersBank = 0;
-	}
+    public int checkBalance() {
 
-	public void setWager(int betAmount) {
+        return playersBank;
+    }
 
-		if (playersBank - betAmount > 0) {
-			this.wager = betAmount;
-			this.playersBank = playersBank - wager;
-		} else {
-			System.out.println("\nYou cannot bet that much! Your balance is: " + playersBank + ", try again.");
-			takeMoney();
-			System.exit(0);
-		}
+    public void takeMoney() {
 
-	}
+        playersBank = 0;
+    }
 
-	public int getWager() {
-		return wager;
-	}
+    public void setWager(int betAmount) {
 
-	public void setPlayerCards(List<Card<Rank, Suit>> slotMachineCards) {
+        if (playersBank - betAmount > 0) {
 
-		this.playersCards.addAll(slotMachineCards);
+            this.wager = betAmount;
+            this.playersBank = playersBank - wager;
 
-	}
+        } else {
 
-	public void setPlayerCards(Card<Rank, Suit> slotMachineCards) {
+            System.out.println("\nYou cannot bet that much! Your balance is: " + playersBank + ", try again.");
+            takeMoney();
+            System.exit(0);
+        }
+    }
 
-		this.playersCards.add(slotMachineCards);
+    public int getWager() {
 
-	}
+        return wager;
+    }
 
-	public List<Card<Rank, Suit>> getPlayerCards() {
+    public void setPlayerCards(List<Card> slotMachineCards) {
 
-		return playersCards;
-	}
+        this.playersCards.addAll(slotMachineCards);
+    }
 
-	public void discard1(int cardNumber) {
+    public void setPlayerCards(Card slotMachineCards) {
 
-		this.playersCards.remove(cardNumber - 1);
+        this.playersCards.add(slotMachineCards);
+    }
 
-	}
+    public List<Card> getPlayerCards() {
 
-	public void discardAllCards() {
+        return playersCards;
+    }
 
-		this.playersCards.removeAll(playersCards);
+    public void discard1(int cardNumber) {
 
-	}
+        this.playersCards.remove(cardNumber - 1);
+    }
 
-	public void winOrLose(int payout) {
-		if (payout == getWager()) {
-			payout = 0;
-		}
-		this.playersBank = playersBank + payout;
-	}
+    public void discardAllCards() {
 
+        this.playersCards.removeAll(playersCards);
+    }
+
+    public void winOrLose(int payout) {
+
+        if (payout == getWager()) {
+            payout = 0;
+        }
+        this.playersBank = playersBank + payout;
+    }
 }
